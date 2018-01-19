@@ -2,7 +2,6 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -18,21 +17,31 @@ public class WheelGUI extends Application{
 	public void start(Stage stage0) throws Exception {
 		stage0.setTitle("MidiWheel");
 		StackPane root = new StackPane();
+		int radius = 80;
+		double theta = Math.PI / 2;
 		
 		Circle outerCircle = new Circle(80);
 		Circle innerCircle = new Circle(77);
-		
-		innerCircle.setFill(Color.WHITE);
-		
+		Circle[] nodes = new Circle[12];
+		Scene scene = new Scene(root, 200, 200);
 		root.getChildren().add(outerCircle);
 		root.getChildren().add(innerCircle);
 		
-		outerCircle.setCenterX(root.getWidth()/2);
-		outerCircle.setCenterY(root.getHeight()/2);
-		innerCircle.setCenterX(root.getWidth()/2);
-		innerCircle.setCenterY(root.getHeight()/2);
+		for (int i = 0; i < nodes.length; i++) {
+			nodes[i] = new Circle((scene.getWidth()/2) + radius*Math.cos(theta),
+								(scene.getHeight()/2) - radius*Math.sin(theta),
+								5,
+								Color.GREEN);
+			nodes[i].setTranslateX(radius*Math.cos(theta));
+			nodes[i].setTranslateY(radius*Math.sin(theta));
+			root.getChildren().add(nodes[i]);
+			theta -= (Math.PI / 6);
+		}
 		
-		stage0.setScene(new Scene(root, 200, 200));
+		innerCircle.setFill(Color.WHITE);
+	
+		
+		stage0.setScene(scene);
 		stage0.show();
 	}
 
