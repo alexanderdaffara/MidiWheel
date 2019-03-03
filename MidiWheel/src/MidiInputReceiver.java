@@ -26,7 +26,12 @@ public class MidiInputReceiver implements Receiver {
         	System.out.println("pitch = " + aMsg[1]);
         	
         	byte velocity = aMsg[2];
-        int mod = aMsg[1] % 12;
+        int mod;
+        if (aMsg[1] % 2 == 1) {
+        		mod = (aMsg[1]+6) % 12;
+        } else {
+        		mod = aMsg[1] % 12;
+        }
         if (velocity != 0) {
         		notesOn[mod] = true;
         } else {
@@ -34,7 +39,6 @@ public class MidiInputReceiver implements Receiver {
         }
         	System.out.println("mod = " + mod);
         	System.out.println("velocity = " + velocity);
-        System.out.println("notesOn = " + notesOn);
         }
             
             // aMsg[0] is something, velocity maybe? Not 100% sure.
