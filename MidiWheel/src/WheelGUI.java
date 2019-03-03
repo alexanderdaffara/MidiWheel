@@ -8,8 +8,9 @@ import javafx.stage.Stage;
 import javafx.scene.shape.Circle;
 
 public class WheelGUI extends Application{
-
+	
 	public static void main(String[] args) {
+		new MidiInputHandler();
 		launch(args);
 	}
 
@@ -44,5 +45,6 @@ public class WheelGUI extends Application{
 		stage0.setScene(scene);
 		stage0.show();
 	}
+	
 
 }

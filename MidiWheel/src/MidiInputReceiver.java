@@ -6,6 +6,10 @@ import javax.sound.midi.Receiver;
 public class MidiInputReceiver implements Receiver {
 	
     public String name;
+    public boolean notesOn[] = new boolean[12];
+    for (int i = 0; i < 12; i++) {
+    		notesOn[i] = false;
+    }
     
     public MidiInputReceiver(String name) {
         this.name = name;
@@ -20,6 +24,7 @@ public class MidiInputReceiver implements Receiver {
         if(!Integer.toBinaryString(aMsg[0]).equals("11111111111111111111111111111000")&&
         	!Integer.toBinaryString(aMsg[0]).equals("11111111111111111111111111111110")) {
         	System.out.println(aMsg[1]);
+        	
         	System.out.println(aMsg[2]);
         }
             

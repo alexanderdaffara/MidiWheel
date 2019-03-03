@@ -4,10 +4,6 @@ import javax.sound.midi.*;
 import java.util.List;
 
 public class MidiInputHandler{
-	
-	public static void main(String[] args) {
-		new MidiInputHandler();
-	}
 
     public MidiInputHandler(){
         MidiDevice device;
