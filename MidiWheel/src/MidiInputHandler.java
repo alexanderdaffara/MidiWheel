@@ -33,7 +33,7 @@ public class MidiInputHandler{
 
             
             //open each device
-            if(device.getDeviceInfo().toString().equals("2- Digital Keyboard-1")){ 
+            if(device.getDeviceInfo().toString().equals("Digital Keyboard")){ 
             	device.open();
             	Transmitter trans = device.getTransmitter();
                 trans.setReceiver(new MidiInputReceiver(device.getDeviceInfo().toString()));

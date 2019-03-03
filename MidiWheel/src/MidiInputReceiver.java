@@ -11,7 +11,7 @@ public class MidiInputReceiver implements Receiver {
         this.name = name;
     }
     public void send(MidiMessage msg, long timeStamp) {
-    	System.out.println("msg received");
+    	//System.out.println("msg received");
 
         byte[] aMsg = msg.getMessage();
         // take the MidiMessage msg and store it in a byte array
@@ -32,7 +32,7 @@ public class MidiInputReceiver implements Receiver {
             // I'm only using VMPK for testing on the go, so it's either 
             // clicked or not.
         
-        System.out.println();
+        //System.out.println();
 	}
     public void close() {}
 }	

@@ -21,19 +21,19 @@ public class WheelGUI extends Application{
 		double theta = Math.PI / 2;
 		
 		Circle outerCircle = new Circle(80);
-		Circle innerCircle = new Circle(77);
+		Circle innerCircle = new Circle(78);
 		Circle[] nodes = new Circle[12];
 		Scene scene = new Scene(root, 200, 200);
 		root.getChildren().add(outerCircle);
 		root.getChildren().add(innerCircle);
 		
 		for (int i = 0; i < nodes.length; i++) {
-			nodes[i] = new Circle((scene.getWidth()/2) + radius*Math.cos(theta),
-								(scene.getHeight()/2) - radius*Math.sin(theta),
+			nodes[i] = new Circle((scene.getWidth()/2) + (radius)*Math.cos(theta),
+								(scene.getHeight()/2) - (radius)*Math.sin(theta),
 								5,
 								Color.GREEN);
-			nodes[i].setTranslateX(radius*Math.cos(theta));
-			nodes[i].setTranslateY(radius*Math.sin(theta));
+			nodes[i].setTranslateX((radius-1)*Math.cos(theta));
+			nodes[i].setTranslateY((radius-1)*Math.sin(theta));
 			root.getChildren().add(nodes[i]);
 			theta -= (Math.PI / 6);
 		}
