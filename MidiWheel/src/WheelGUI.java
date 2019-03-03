@@ -13,7 +13,6 @@ public class WheelGUI extends Application{
 	public static void main(String[] args) {
 		MidiInputHandler handler = new MidiInputHandler();
 		MidiInputReceiver receiver = (MidiInputReceiver)handler.trans.getReceiver();
-		boolean notesOn[] = receiver.notesOn;
 		
 		launch(args);
 	}
