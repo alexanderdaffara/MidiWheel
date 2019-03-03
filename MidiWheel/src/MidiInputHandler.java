@@ -5,6 +5,8 @@ import java.util.List;
 
 public class MidiInputHandler{
 
+	public Transmitter trans;
+	
     public MidiInputHandler(){
         MidiDevice device;
         MidiDevice.Info[] infos = MidiSystem.getMidiDeviceInfo();
@@ -22,8 +24,8 @@ public class MidiInputHandler{
             for(int j = 0; j<transmitters.size();j++) {
                 //create a new receiver
                 transmitters.get(j).setReceiver(
-                        //using my own MidiInputReceiver
-                        new MidiInputReceiver(device.getDeviceInfo().toString())
+                     //using my own MidiInputReceiver
+                		new MidiInputReceiver(device.getDeviceInfo().toString())
                 );
             }
 
@@ -31,9 +33,8 @@ public class MidiInputHandler{
             //open each device
             if(device.getDeviceInfo().toString().equals("Digital Keyboard")){ 
             	device.open();
-            	Transmitter trans = device.getTransmitter();
+            	trans = device.getTransmitter();
                 trans.setReceiver(new MidiInputReceiver(device.getDeviceInfo().toString()));
-
             }
             //if code gets this far without throwing an exception
             //print a success message

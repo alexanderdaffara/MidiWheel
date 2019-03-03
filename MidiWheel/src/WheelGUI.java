@@ -6,11 +6,15 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.shape.Circle;
+import javax.sound.midi.Receiver;
 
 public class WheelGUI extends Application{
 	
 	public static void main(String[] args) {
-		new MidiInputHandler();
+		MidiInputHandler handler = new MidiInputHandler();
+		MidiInputReceiver receiver = (MidiInputReceiver)handler.trans.getReceiver();
+		boolean notesOn[] = receiver.notesOn;
+		
 		launch(args);
 	}
 

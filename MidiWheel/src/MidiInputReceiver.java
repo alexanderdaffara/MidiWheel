@@ -7,12 +7,12 @@ public class MidiInputReceiver implements Receiver {
 	
     public String name;
     public boolean notesOn[] = new boolean[12];
-    for (int i = 0; i < 12; i++) {
-    		notesOn[i] = false;
-    }
     
     public MidiInputReceiver(String name) {
         this.name = name;
+        for (int i = 0; i < 12; i++) {
+    			notesOn[i] = false;
+        }
     }
     public void send(MidiMessage msg, long timeStamp) {
     	//System.out.println("msg received");
@@ -23,9 +23,18 @@ public class MidiInputReceiver implements Receiver {
         // msg.getLength() returns the length of the message in bytes
         if(!Integer.toBinaryString(aMsg[0]).equals("11111111111111111111111111111000")&&
         	!Integer.toBinaryString(aMsg[0]).equals("11111111111111111111111111111110")) {
-        	System.out.println(aMsg[1]);
+        	System.out.println("pitch = " + aMsg[1]);
         	
-        	System.out.println(aMsg[2]);
+        	byte velocity = aMsg[2];
+        int mod = aMsg[1] % 12;
+        if (velocity != 0) {
+        		notesOn[mod] = true;
+        } else {
+        		notesOn[mod] = false;
+        }
+        	System.out.println("mod = " + mod);
+        	System.out.println("velocity = " + velocity);
+        System.out.println("notesOn = " + notesOn);
         }
             
             // aMsg[0] is something, velocity maybe? Not 100% sure.
@@ -40,4 +49,4 @@ public class MidiInputReceiver implements Receiver {
         //System.out.println();
 	}
     public void close() {}
-}	
+}
